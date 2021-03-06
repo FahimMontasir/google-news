@@ -2,10 +2,10 @@ import { Col, Row } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { Container, Jumbotron } from 'react-bootstrap';
 
-const Top = () => {
+const Ban = () => {
   const [techs, setTechs] = useState([]);
   useEffect(() => {
-    fetch("https://bing-news-search1.p.rapidapi.com/news/search?q=trending&freshness=Day&textFormat=Raw&safeSearch=Off", {
+    fetch("https://bing-news-search1.p.rapidapi.com/news/search?q=bangladesh&freshness=Day&textFormat=Raw&safeSearch=Off", {
       "method": "GET",
       "headers": {
         "x-bingapis-sdk": "true",
@@ -28,7 +28,7 @@ const Top = () => {
                 <Container>
                   <Row >
                     <Col xs={12} md={6} className='text-center'>
-                      <img style={{ width: '50%', padding: '1rem 0' }} src={tech.image.thumbnail.contentUrl} alt="" />
+                      <img style={{ width: '50%', padding: '1rem 0' }} src='' alt="not found" />
                     </Col>
                     <Col xs={12} md={6} className="d-flex flex-column justify-content-end">
                       <h5>{name}</h5>
@@ -45,4 +45,4 @@ const Top = () => {
   );
 };
 
-export default Top;
+export default Ban;

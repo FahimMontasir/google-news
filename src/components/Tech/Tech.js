@@ -1,37 +1,45 @@
-import { Button, Col, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { Container, Jumbotron } from 'react-bootstrap';
 
 const Tech = () => {
 
   const [techs, setTechs] = useState([]);
-  const url = "https://newsapi.org/v2/top-headlines?category=technology&country=us&apiKey=e6f34f1fb00e47c98c55c5fffea4abd8"
   useEffect(() => {
-    fetch(url)
+    fetch("https://bing-news-search1.p.rapidapi.com/news/search?q=programming&freshness=Day&textFormat=Raw&safeSearch=Off", {
+      "method": "GET",
+      "headers": {
+        "x-bingapis-sdk": "true",
+        "x-rapidapi-key": "b7fc677213msh88b7b069d11ddecp150bfejsnb370d83a4346",
+        "x-rapidapi-host": "bing-news-search1.p.rapidapi.com"
+      }
+    })
       .then(res => res.json())
-      .then(data => setTechs(data.articles))
+      .then(data => setTechs(data.value))
   }, [])
 
   return (
     <div>
       {
-        techs.map(tech => {
-          console.log(tech)
-          const { urlToImage, title, content, description } = tech;
-          return <Jumbotron fluid>
-            <Container>
-              <Row >
-                <Col xs={12} md={6}>
-                  <img style={{ width: '100%', padding: '1rem 0' }} src={urlToImage} alt="" />
-                </Col>
-                <Col xs={12} md={6} className="d-flex flex-column justify-content-end">
-                  <h5>{title}</h5>
-                  <p>{description}</p>
-                  <Button>Read more</Button>
-                </Col>
-              </Row>
-            </Container>
-          </Jumbotron>
+        techs.map((tech, idx) => {
+          const { name, url, description } = tech;
+          return (
+            <div key={idx}>
+              <Jumbotron fluid>
+                <Container>
+                  <Row >
+                    <Col xs={12} md={6} className='text-center'>
+                      <img src="" alt="not found" />
+                    </Col>
+                    <Col xs={12} md={6} className="d-flex flex-column justify-content-end">
+                      <h5>{name}</h5>
+                      <p>{description}</p>
+                      <a href={url} className="btn btn-dark">Read more</a>
+                    </Col>
+                  </Row>
+                </Container>
+              </Jumbotron>
+            </div>)
         })
       }
     </div>
