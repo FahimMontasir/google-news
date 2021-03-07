@@ -28,7 +28,7 @@ const Science = () => {
                 <Container>
                   <Row >
                     <Col xs={12} md={6} className='text-center'>
-                      <img style={{ width: '50%', padding: '1rem 0' }} src={tech.image.thumbnail.contentUrl} alt="" />
+                      <img style={{ width: '50%', padding: '1rem 0' }} src='' alt="" />
                     </Col>
                     <Col xs={12} md={6} className="d-flex flex-column justify-content-end">
                       <h5>{name}</h5>
